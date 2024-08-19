@@ -8,7 +8,7 @@ import FoodDetails from "./components/FoodDetails";
 import "./App.css";
 function App() {
   const [foodData, setFoodData] = useState([]);
-  const [foodID, setFoodID] = useState("");
+  const [foodID, setFoodID] = useState("656329");
   return (
     <div className="App">
       <NavBar />
