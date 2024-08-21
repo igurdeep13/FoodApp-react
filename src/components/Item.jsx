@@ -1,3 +1,4 @@
+import styles from "./item.module.css"
 export default function ItemList({ food, isLoading }) {
   return (
     <div>
@@ -7,7 +8,7 @@ export default function ItemList({ food, isLoading }) {
         food.extendedIngredients.map((item) => (
           <div className={styles.itemContainer}>
             <div className={styles.imageContainer}>
-              <img
+              <img className={styles.image}
                 src={
                   `https://spoonacular.com/cdn/ingredients_100x100/` +
                   item.image
