@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./fooddetails.module.css";
 
 export default function FoodDetails({ foodID }) {
   const [food, setFood] = useState({});
@@ -18,25 +19,31 @@ export default function FoodDetails({ foodID }) {
   }, [foodID]);
 
   return (
-    <div>
+    <div className={styles.recipeCard}>
       <div>
-        <h1>{food.title}</h1>
-        <img src={food.image} alt="" />
+        <h1 className={styles.recipeName}>{food.title}</h1>
+        <img className={styles.recipeImage} src={food.image} alt="" />
       </div>
-      <span>
-        <strong>⏱{food.readyInMinutes} Minutes</strong>
+      <div className={styles.recipeDetails}>
+        <span>
+          <strong>⏱{food.readyInMinutes} Minutes</strong>
+        </span>
         <span>
           👨‍👧‍👦<strong> serves {food.servings} </strong>
         </span>
         <span>{food.Vegetarian ? " 🥗 Vegetarian" : " 🍗 Non-Vegetarian"}</span>
-      </span>
-      <div>
-        <h2>Instructions</h2>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          food.analyzedInstructions[0].steps.map((step) => <li>{step.step}</li>)
-        )}
+      </div>
+      <div className={styles.recipeInstructions}> 
+        <ol>
+          ;<h2>Instructions</h2>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            food.analyzedInstructions[0].steps.map((step) => (
+              <li>{step.step}</li>
+            ))
+          )}
+        </ol>
       </div>
     </div>
   );
