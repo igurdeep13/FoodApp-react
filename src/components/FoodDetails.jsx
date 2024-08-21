@@ -33,9 +33,17 @@ export default function FoodDetails({ foodID }) {
         </span>
         <span>{food.Vegetarian ? " 🥗 Vegetarian" : " 🍗 Non-Vegetarian"}</span>
       </div>
-      <div className={styles.recipeInstructions}> 
+      <h2>Ingredients</h2>
+      {food.extendedIngredients.map((item) => (
+        <div>
+          <img src={`https://spoonacular.com/cdn/ingredients_100x100/`+ item.image} alt="" />
+          <h3>{item.name}</h3>
+          <h3>{item.amount}{item.unit}</h3>
+        </div>
+      ))}
+      <h2>Instructions</h2>
+      <div className={styles.recipeInstructions}>
         <ol>
-          ;<h2>Instructions</h2>
           {isLoading ? (
             <p>Loading...</p>
           ) : (
